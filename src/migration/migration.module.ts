@@ -3,9 +3,13 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { MigrationService } from './migration.service';
 import { MigrationController } from './migration.controller';
 import { Admin } from './admin.entity';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Admin])],
+    imports: [
+        ConfigModule.forRoot(),
+        TypeOrmModule.forFeature([Admin])
+    ],
   providers: [MigrationService],
   controllers: [MigrationController],
 })
